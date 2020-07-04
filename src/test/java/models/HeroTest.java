@@ -29,13 +29,15 @@ public class HeroTest {
     }
 
     @Test
-    public void getAge() {
+    public void getAge_returnsCorrectAge() {
         Hero hero = helperMethod();
         assertEquals(25, hero.getAge());
     }
 
     @Test
-    public void getSpecialPower() {
+    public void getSpecialPower_returnsCorrectSpecialPower() {
+        Hero hero = helperMethod();
+        assertEquals("Reading", hero.getSpecialPower());
     }
 
     @Test
