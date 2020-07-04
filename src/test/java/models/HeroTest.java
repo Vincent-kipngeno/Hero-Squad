@@ -48,6 +48,9 @@ public class HeroTest {
 
     @Test
     public void getId() {
+        Hero hero = helperMethod();
+        hero.setId(1);
+        assertEquals(1, hero.getId());
     }
 
     @Test
