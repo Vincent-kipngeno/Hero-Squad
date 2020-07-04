@@ -8,5 +8,11 @@ public class Hero {
     private int id;
     private int squadId;
 
-
+    public Hero(String name, int age, String specialPower, String weakness, int squadId) {
+        this.name = name;
+        this.age = age;
+        this.specialPower = specialPower;
+        this.weakness = weakness;
+        this.squadId = squadId;
+    }
 }
