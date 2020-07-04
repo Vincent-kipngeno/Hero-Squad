@@ -41,7 +41,9 @@ public class HeroTest {
     }
 
     @Test
-    public void getWeakness() {
+    public void getWeakness_correctWeaknessIsReturned() {
+        Hero hero = helperMethod();
+        assertEquals("fluency", hero.getWeakness());
     }
 
     @Test
