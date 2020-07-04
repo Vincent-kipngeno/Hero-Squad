@@ -17,7 +17,9 @@ public class HeroTest {
     }
 
     @Test
-    public void getName() {
+    public void getName_returnsCorrectName() {
+        Hero hero = helperMethod();
+        assertEquals("vincent", hero.getName());
     }
 
     @Test
@@ -42,5 +44,9 @@ public class HeroTest {
 
     @Test
     public void setId() {
+    }
+
+    public Hero helperMethod(){
+        return new Hero("Vincent", 25, "Reading", "fluency", 1);
     }
 }
