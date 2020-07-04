@@ -17,9 +17,15 @@ public class HeroTest {
     }
 
     @Test
+    public void newHero_instantiatesCorrectly() {
+        Hero hero = helperMethod();
+        assertTrue(hero instanceof Hero);
+    }
+
+    @Test
     public void getName_returnsCorrectName() {
         Hero hero = helperMethod();
-        assertEquals("vincent", hero.getName());
+        assertEquals("Vincent", hero.getName());
     }
 
     @Test
