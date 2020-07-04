@@ -47,18 +47,23 @@ public class HeroTest {
     }
 
     @Test
-    public void getId() {
+    public void getId_correctIdIsReturned() {
         Hero hero = helperMethod();
         hero.setId(1);
         assertEquals(1, hero.getId());
     }
 
     @Test
-    public void getSquadId() {
+    public void getSquadId_correctSquadIdIsReturned() {
+        Hero hero = helperMethod();
+        assertEquals(1, hero.getSquadId());
     }
 
     @Test
-    public void setId() {
+    public void setId_setsAndReturnsCorrectId() {
+        Hero hero = helperMethod();
+        hero.setId(1);
+        assertEquals(1, hero.getId());
     }
 
     public Hero helperMethod(){
