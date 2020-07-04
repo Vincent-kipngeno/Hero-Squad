@@ -30,6 +30,8 @@ public class HeroTest {
 
     @Test
     public void getAge() {
+        Hero hero = helperMethod();
+        assertEquals(25, hero.getAge());
     }
 
     @Test
