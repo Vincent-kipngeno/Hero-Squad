@@ -39,4 +39,8 @@ public class Hero {
     public int getSquadId() {
         return squadId;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }
