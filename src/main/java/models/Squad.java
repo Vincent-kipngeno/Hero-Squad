@@ -12,4 +12,19 @@ public class Squad {
         this.causeToFight = causeToFight;
     }
 
+    public int getMaximumSize() {
+        return maximumSize;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getCauseToFight() {
+        return causeToFight;
+    }
+
+    public int getId() {
+        return id;
+    }
 }
