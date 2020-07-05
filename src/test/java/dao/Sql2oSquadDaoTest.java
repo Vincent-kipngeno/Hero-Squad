@@ -18,7 +18,7 @@ public class Sql2oSquadDaoTest {
     @BeforeClass
     public static void setUp() throws Exception {
         String connectionString = "jdbc:postgresql://localhost:5432/hero_squad_test"; // connect to postgres test database
-        Sql2o sql2o = new Sql2o(connectionString, "vincent", "Taptet#2001");         // changed user and pass to null
+        Sql2o sql2o = new Sql2o(connectionString, "vincent", "Taptet#2001");
         squadDao = new Sql2oSquadDao(sql2o);
         heroDao = new Sql2oHeroDao(sql2o);
         conn = sql2o.open();
@@ -27,13 +27,13 @@ public class Sql2oSquadDaoTest {
     @After
     public void tearDown() throws Exception {
         System.out.println("clearing database");
-        squadDao.clearAllSquads(); // clear all categories after every test
-        heroDao.clearAllHeroes(); // clear all tasks after every test
+        squadDao.clearAllSquads();
+        heroDao.clearAllHeroes();
     }
 
-    @AfterClass // changed to @AfterClass (run once after all tests in this file completed)
-    public static void shutDown() throws Exception { //changed to static and shutDown
-        conn.close(); // close connection once after this entire test file is finished
+    @AfterClass
+    public static void shutDown() throws Exception {
+        conn.close();
         System.out.println("connection closed");
     }
 
@@ -104,27 +104,13 @@ public class Sql2oSquadDaoTest {
         Hero otherHero = new Hero("Kevin", 20, "Learning", "passing", squadId);
         Hero thirdHero = new Hero("Vincent", 45, "Leadership", "talking", squadId);
         heroDao.add(newHero);
-        heroDao.add(otherHero); //we are not adding task 3 so we can test things precisely.
+        heroDao.add(otherHero);
         assertEquals(2, squadDao.getAllHeroesBySquad(squadId).size());
         assertTrue(squadDao.getAllHeroesBySquad(squadId).contains(newHero));
         assertTrue(squadDao.getAllHeroesBySquad(squadId).contains(otherHero));
         assertFalse(squadDao.getAllHeroesBySquad(squadId).contains(thirdHero)); //things are accurate!
     }
 
-    @Test
-    public void getAllSquadsWithSpace_noSquadIsReturnedWhenAllItsMaximumSizeHasReached() throws Exception {
-        Squad squad = new Squad(3, "discipline", "indiscipline");
-        squadDao.add(squad);
-        int squadId = squad.getId();
-        Hero newHero = new Hero("Vincent", 25, "Reading", "fluency", squadId);
-        Hero otherHero = new Hero("Kevin", 20, "Learning", "passing", squadId);
-        Hero thirdHero = new Hero("Vincent", 45, "Leadership", "talking", squadId);
-        heroDao.add(newHero);
-        heroDao.add(otherHero); //we are not adding task 3 so we can test things precisely.
-        heroDao.add(thirdHero);
-        List<Squad> allSquads = squadDao.getAll();
-        assertTrue(squadDao.getAllSquadsWithSpace(allSquads, squadDao).size() > 0);
-    }
 
     // helper method
     public Squad setupNewSquad(){

@@ -94,15 +94,4 @@ public class Sql2oSquadDao implements SquadDao {
         }
     }
 
-    @Override
-    public List<Squad> getAllSquadsWithSpace(List<Squad> squads, Sql2oSquadDao squadDao) {
-        List<Squad> squadsWithSpace = new ArrayList<Squad>();
-        for (Squad squad: squads){
-           int squadId = squad.getId();
-           if (squadDao.getAllHeroesBySquad(squadId).size() < squad.getMaximumSize()){
-              squadsWithSpace.add(squad);
-           }
-        }
-        return squadsWithSpace;
-    }
 }
