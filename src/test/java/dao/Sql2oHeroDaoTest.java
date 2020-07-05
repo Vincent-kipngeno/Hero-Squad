@@ -2,15 +2,17 @@ package dao;
 
 import models.Hero;
 import org.junit.*;
+import org.sql2o.*;
+import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
-import java.sql.Connection;
+
 
 import static org.junit.Assert.*;
 
 public class Sql2oHeroDaoTest {
-    public static  Sql2oHeroDao heroDao;
-    public static Connection conn;
+    private static  Sql2oHeroDao heroDao;
+    private static Connection conn;
 
     @BeforeClass
     public static void setUp() throws Exception {
