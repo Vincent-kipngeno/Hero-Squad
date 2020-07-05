@@ -122,12 +122,74 @@ public class App {
             List<Squad> squadsWithSpace = new ArrayList<Squad>();
             for (Squad squad:squads ) {
                 int squadId = squad.getId();
-                if (squadDao.getAllHeroesBySquad(squadId).size() < 0){
+                if (squadDao.getAllHeroesBySquad(squadId).size() < squad.getMaximumSize()){
                     squadsWithSpace.add(squad);
                 }
             }
             model.put("squadsWithSpace", squadsWithSpace);
             return new ModelAndView(model, "hero-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        //post: process new hero form
+        post("/heroes", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Squad> allSquads = squadDao.getAll();
+            model.put("squads", allSquads);
+            String name = req.queryParams("name");
+            int age = Integer.parseInt(req.queryParams("age"));
+            String specialPower = req.queryParams("specialPower");
+            String weakness = req.queryParams("weakness");
+            int squadId = Integer.parseInt(req.queryParams("squadId"));
+            Hero newHero = new Hero(name, age, specialPower, weakness, squadId);
+            heroDao.add(newHero);
+            res.redirect("/");
+            return null;
+        }, new HandlebarsTemplateEngine());
+
+        //get: show an individual hero that is nested in a squad
+        get("/squads/:squad_id/heroes/:hero_id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfHeroToFind = Integer.parseInt(req.params("hero_id"));
+            Hero foundHero = heroDao.findById(idOfHeroToFind);
+            int idOfSquadToFind = Integer.parseInt(req.params("squad_id"));
+            Squad foundSquad = squadDao.findById(idOfSquadToFind);
+            model.put("squad", foundSquad);
+            model.put("hero", foundHero);
+            model.put("squads", squadDao.getAll()); //refresh list of links for navbar
+            return new ModelAndView(model, "hero-detail.hbs"); //individual hero page.
+        }, new HandlebarsTemplateEngine());
+
+        //get: show a form to update a hero
+        get("/heroes/:id/edit", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Squad> allSquads = squadDao.getAll();
+            model.put("squads", allSquads);
+            List<Squad> squadsWithSpace = new ArrayList<Squad>();
+            for (Squad squad:allSquads) {
+                int squadId = squad.getId();
+                if (squadDao.getAllHeroesBySquad(squadId).size() < squad.getMaximumSize()){
+                    squadsWithSpace.add(squad);
+                }
+            }
+            model.put("squadsWithSpace", squadsWithSpace);
+            Hero hero = heroDao.findById(Integer.parseInt(req.params("id")));
+            model.put("hero", hero);
+            model.put("editHero", true);
+            return new ModelAndView(model, "hero-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        //post: process a form to update a hero
+        post("/heroes/:id", (req, res) -> { //URL to update hero on POST route
+            Map<String, Object> model = new HashMap<>();
+            int heroToEditId = Integer.parseInt(req.params("id"));
+            String newName = req.queryParams("name");
+            int age = Integer.parseInt(req.queryParams("age"));
+            String specialPower = req.queryParams("specialPower");
+            String weakness = req.queryParams("weakness");
+            int newSquadId = Integer.parseInt(req.queryParams("squadId"));
+            heroDao.update(heroToEditId,age, newName, specialPower, weakness, newSquadId);
+            res.redirect("/");
+            return null;
         }, new HandlebarsTemplateEngine());
     }
 }
