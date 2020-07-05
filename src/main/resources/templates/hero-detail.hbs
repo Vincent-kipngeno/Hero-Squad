@@ -1,0 +1,18 @@
+{{#partial "content"}}
+
+    <p>Name: {{ hero.name }}</p>
+    <p>Age: {{ hero.age }}</p>
+    <p>Special Power: {{ hero.specialPower }}</p>
+    <p>Weakness: {{ hero.weakness }}</p>
+    <p>Hero squad: {{ squad.name }}</p>
+
+    <div class="row">
+        <div class="col-md-12">
+            <a class="btn btn-info" href="/tasks/{{task.id}}/edit">Edit this task</a><br>
+            <a class="btn btn-info" href="/categories/{{task.categoryId}}/tasks/{{task.id}}/delete">DELETE this task</a>
+        </div>
+    </div>
+
+{{/partial}}
+
+{{> layout.hbs}}
