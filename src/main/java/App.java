@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -82,6 +83,51 @@ public class App {
             return new ModelAndView(model, "squad-detail.hbs"); //new
         }, new HandlebarsTemplateEngine());
 
+        //get: show a form to update a squad
+        get("/squads/:id/edit", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            model.put("editSquad", true);
+            Squad squad = squadDao.findById(Integer.parseInt(req.params("id")));
+            model.put("squad", squad);
+            model.put("squads", squadDao.getAll()); //refresh list of links for navbar
+            return new ModelAndView(model, "squad-form.hbs");
+        }, new HandlebarsTemplateEngine());
 
+        //post: process a form to update a squad
+        post("/squads/:id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfSquadToEdit = Integer.parseInt(req.params("id"));
+            String newName = req.queryParams("name");
+            String causeToFight = req.queryParams("cause");
+            int maximumSize = Integer.parseInt(req.queryParams("maximumSize"));
+            squadDao.update(idOfSquadToEdit,maximumSize, newName, causeToFight);
+            res.redirect("/");
+            return null;
+        }, new HandlebarsTemplateEngine());
+
+        //get: delete an individual hero
+        get("/squads/:squad_id/heroes/:hero_id/delete", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfHeroToDelete = Integer.parseInt(req.params("hero_id"));
+            heroDao.deleteById(idOfHeroToDelete);
+            res.redirect("/");
+            return null;
+        }, new HandlebarsTemplateEngine());
+
+        //get: show new hero form
+        get("/heroes/new", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Squad> squads = squadDao.getAll();
+            model.put("squads", squads);
+            List<Squad> squadsWithSpace = new ArrayList<Squad>();
+            for (Squad squad:squads ) {
+                int squadId = squad.getId();
+                if (squadDao.getAllHeroesBySquad(squadId).size() < 0){
+                    squadsWithSpace.add(squad);
+                }
+            }
+            model.put("squadsWithSpace", squadsWithSpace);
+            return new ModelAndView(model, "hero-form.hbs");
+        }, new HandlebarsTemplateEngine());
     }
 }
