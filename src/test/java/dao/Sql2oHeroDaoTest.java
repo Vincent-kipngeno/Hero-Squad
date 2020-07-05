@@ -80,6 +80,26 @@ public class Sql2oHeroDaoTest {
         assertNotEquals(hero, updatedHero);
     }
 
+    @Test
+    public void deleteById_individualHeroIsDeletedCorrectlyByItsId() {
+        Hero hero = setNewHero();
+        Hero otherHero = new Hero("kevin",15,"playing","laughing", 1);
+        heroDao.add(hero);
+        heroDao.add(otherHero);
+        heroDao.deleteById(hero.getId());
+        assertEquals(1, heroDao.getAll().size());
+    }
+
+    @Test
+    public void clearAllHeroes_allAddedHeroesCanBeCleared() {
+        Hero hero = setNewHero();
+        Hero otherHero = new Hero("kevin",15,"playing","laughing", 1);
+        heroDao.add(hero);
+        heroDao.add(otherHero);
+        heroDao.clearAllHeroes();
+        assertEquals(0, heroDao.getAll().size());
+    }
+
     public Hero setNewHero(){
         return new Hero("Vincent", 25, "Reading", "fluency", 1);
     }
