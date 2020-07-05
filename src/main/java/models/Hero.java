@@ -1,5 +1,7 @@
 package models;
 
+import java.util.Objects;
+
 public class Hero {
     private String name;
     private int age;
@@ -44,4 +46,21 @@ public class Hero {
         this.id = id;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Hero hero = (Hero) o;
+        return age == hero.age &&
+                id == hero.id &&
+                squadId == hero.squadId &&
+                Objects.equals(name, hero.name) &&
+                Objects.equals(specialPower, hero.specialPower) &&
+                Objects.equals(weakness, hero.weakness);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, age, specialPower, weakness, id, squadId);
+    }
 }
