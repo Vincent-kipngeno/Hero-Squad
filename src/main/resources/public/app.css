@@ -1,7 +1,9 @@
 .intro-2 {
-    background: url("https://mdbootstrap.com/img/Photos/Others/img (51).jpg")no-repeat center center;
+    background: url("https://mdbootstrap.com/img/Photos/Others/img (51).jpg") rgba(0, 0, 0, 0.5) no-repeat center center;
     background-size: cover;
-    background-blend
+    text-align: center;
+    color: white;
+    background-blend-mode: multiply;
 }
 .view {
     margin-top: -20px;
