@@ -5,12 +5,14 @@ import models.Hero;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Sql2oSquadDao implements SquadDao {
 
     private final Sql2o sql2o;
-
+    private static Sql2oSquadDao squadDao;
     public Sql2oSquadDao(Sql2o sql2o){
         this.sql2o = sql2o;
     }
@@ -91,5 +93,17 @@ public class Sql2oSquadDao implements SquadDao {
                     .addParameter("squadId", squadId)
                     .executeAndFetch(Hero.class);
         }
+    }
+
+    @Override
+    public List<Squad> getAllSquadsWithSpace(List<Squad> squads) {
+        List<Squad> squadsWithSpace = new ArrayList<Squad>();
+        for (Squad squad: squads){
+           int squadId = squad.getId();
+           if (squadDao.getAllHeroesBySquad(squadId).size() < squad.getMaximumSize()){
+              squadsWithSpace.add(squad);
+           }
+        }
+        return squadsWithSpace;
     }
 }
