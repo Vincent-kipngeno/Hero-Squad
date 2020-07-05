@@ -18,22 +18,35 @@ public class SquadTest {
 
 
     @Test
-    public void getMaximumSize() {
+    public void getMaximumSize_correctMaxSizeIsReturned() {
+        Squad squad =  helperMethod();
+        assertEquals(4, squad.getMaximumSize());
     }
 
     @Test
-    public void getName() {
+    public void getName_correctNameIsReturned() {
+        Squad squad =  helperMethod();
+        assertEquals("discipline", squad.getName());
     }
 
     @Test
-    public void getCauseToFight() {
+    public void getCauseToFight_correctCauseToFightIsReturned() {
+        Squad squad =  helperMethod();
+        assertEquals("indiscipline", squad.getCauseToFight());
     }
 
     @Test
-    public void getId() {
+    public void getId_correctIdIsReturned() {
+        Squad squad =  helperMethod();
+        squad.setId(1);
+        assertEquals(1, squad.getId());
     }
 
     @Test
     public void setId() {
+    }
+
+    public Squad helperMethod(){
+        return new Squad(4, "discipline", "indiscipline");
     }
 }
