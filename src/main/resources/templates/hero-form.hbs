@@ -1,6 +1,34 @@
 {{#partial "content"}}
     {{#if editHero}}
-
+        <h1>Edit this Hero!</h1>
+        <form class="form" action="/heroes/{{hero.id}}" method="post">
+            <div class="form-group">
+                <label for="name">Edit this hero's name:</label>
+                <input id="name" name="name" class="form-control" type="text" value="{{hero.name}}">
+            </div>
+            <div class="form-group">
+                <label for="age">Edit this hero's age:</label>
+                <input id="age" name="age" class="form-control" type="text" value="{{hero.age}}">
+            </div>
+            <div class="form-group">
+                <label for="specialPower">Edit this hero's special Power:</label>
+                <input id="specialPower" name="specialPower" class="form-control" type="text" value="{{hero.name}}">
+            </div>
+            <div class="form-group">
+                <label for="weakness">Edit this hero's weakness:</label>
+                <input id="weakness" name="weakness" class="form-control" type="text" value="{{hero.name}}">
+            </div>
+            <div class="form-group">
+                <label for="squadId">Update this hero's squad:</label>
+                <select id="squadId" name="squadId" class="form-control">
+                    {{#each squads}}
+                        <option value="{{id}}">{{name}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <p>Don't see the right squad?<a href="/squads/new">Add a new one first.</a></p>
+            <button type="submit" class="btn btn-default">Go!</button>
+        </form>
     {{else}}
         <h2>Add a new Hero!</h2>
         <form class="form" action="/heroes" method="post">
