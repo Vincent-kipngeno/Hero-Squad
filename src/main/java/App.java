@@ -174,6 +174,8 @@ public class App {
             model.put("squadsWithSpace", squadsWithSpace);
             Hero hero = heroDao.findById(Integer.parseInt(req.params("id")));
             model.put("hero", hero);
+            Squad foundSquad = squadDao.findById(hero.getId());
+            model.put("squad", foundSquad);
             model.put("editHero", true);
             return new ModelAndView(model, "hero-form.hbs");
         }, new HandlebarsTemplateEngine());
@@ -187,11 +189,6 @@ public class App {
             String specialPower = req.queryParams("specialPower");
             String weakness = req.queryParams("weakness");
             int newSquadId = Integer.parseInt(req.queryParams("squadId"));
-            if (newSquadId >= 0){
-                ;
-            } else{
-                newSquadId = heroDao.findById(heroToEditId).getSquadId();
-            }
             heroDao.update(heroToEditId,age, newName, specialPower, weakness, newSquadId);
             res.redirect("/");
             return null;
