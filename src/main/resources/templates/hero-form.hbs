@@ -1,0 +1,41 @@
+{{#partial "content"}}
+    {{#if editHero}}
+
+    {{else}}
+        <h2>Add a new Hero!</h2>
+        <form class="form" action="/heroes" method="post">
+            {{#if squads}}
+                <div class="form-group">
+                    <label for="name">Hero name</label>
+                    <input id="name" name="name" class="form-control" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="age">Edit this hero's age:</label>
+                    <input id="age" name="age" class="form-control" type="text" value="{{hero.age}}">
+                </div>
+                <div class="form-group">
+                    <label for="specialPower">Edit this hero's special Power:</label>
+                    <input id="specialPower" name="specialPower" class="form-control" type="text" value="{{hero.name}}">
+                </div>
+                <div class="form-group">
+                    <label for="weakness">Edit this hero's weakness:</label>
+                    <input id="weakness" name="weakness" class="form-control" type="text" value="{{hero.name}}">
+                </div>
+                <div class="form-group">
+                    <label for="squadId">Add squad to this hero:</label>
+                    <select id="squadId" class="form-control" name="squadId">
+                        {{#each squads}}
+                            <option value="{{id}}">{{name}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <p>Don't see the right category?<a href="/categories/new">Add a new one first.</a></p>
+            {{else}}
+                <h3> You'll need to add a category before you add a task. <a href="/categories/new">Add one here.</a> </h3>
+            {{/if}}
+            <button type="submit" class="btn btn-default">Go!</button>
+        </form>
+    {{/if}}
+{{/partial}}
+
+{{> layout.hbs}}
