@@ -39,7 +39,7 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             List<Squad> squads = squadDao.getAll(); //refresh list of links for navbar
             model.put("squads", squads);
-            return new ModelAndView(model, "squad-form.hbs"); //new layout
+            return new ModelAndView(model, "squad-form.hbs");
         }, new HandlebarsTemplateEngine());
 
         //post: process a form to create a new squad
@@ -74,13 +74,13 @@ public class App {
         //get a specific squad (and the heroes it contains)
         get("/categories/:id", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            int idOfSquadToFind = Integer.parseInt(req.params("id")); //new
+            int idOfSquadToFind = Integer.parseInt(req.params("id"));
             Squad foundSquad = squadDao.findById(idOfSquadToFind);
             model.put("squad", foundSquad);
             List<Hero> allHeroesBySquad = squadDao.getAllHeroesBySquad(idOfSquadToFind);
             model.put("heroes", allHeroesBySquad);
             model.put("squads", squadDao.getAll()); //refresh list of links for navbar
-            return new ModelAndView(model, "squad-detail.hbs"); //new
+            return new ModelAndView(model, "squad-detail.hbs");
         }, new HandlebarsTemplateEngine());
 
         //get: show a form to update a squad
