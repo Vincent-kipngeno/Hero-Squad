@@ -1,68 +1,64 @@
 <!DOCTYPE html>
 <html>
-<head>
+<link>
     <title>{{#block "title"}}Blog{{/block}}</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="app.css"/>
 </head>
 <body>
-<nav class="navbar navbar-dark bg-primary" >
-    <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-        <div  class="navbar-header">
-            <button  type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span style = "float: right" class = "btn btn-default" style = "color: white" >Toggle</span>
-            </button>
-            <a style = "color: white" class="navbar-brand" href="#">HOME</a>
+<header>
+    <nav class="navbar navbar-dark bg-primary" >
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div  class="navbar-header">
+                <button  type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span style = "float: right" class = "btn btn-default" style = "color: white" >Toggle</span>
+                </button>
+                <a style = "color: white" class="navbar-brand" href="#">HOME</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a style = "color: white" href="/">View Heroes<span class="sr-only">(current)</span></a></li>
+                    <li class="active"><a style = "color: white" href="/heroes/new">Add new hero<span class="sr-only">(current)</span></a></li>
+                    <li class="dropdown">
+                        <a style = "color: white" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Squads Menu <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            {{#if squads}}
+                                {{#each squads}}
+                                    <li><a href="/categories/{{id}}">{{name}}</a></li>
+                                {{/each}}
+                                <li><a href="/squads/new">Add a Squad</a></li>
+
+                            {{else}}
+                                <li><a href="/squads/new">Add a Squad</a></li>
+                            {{/if}}
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li class="active"><a style = "color: white" href="/">View Heroes<span class="sr-only">(current)</span></a></li>
-                <li class="active"><a style = "color: white" href="/heroes/new">Add new hero<span class="sr-only">(current)</span></a></li>
-                <li class="dropdown">
-                    <a style = "color: white" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Squads Menu <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        {{#if squads}}
-                            {{#each squads}}
-                                <li><a href="/categories/{{id}}">{{name}}</a></li>
-                            {{/each}}
-                            <li><a href="/squads/new">Add a Squad</a></li>
-
-                        {{else}}
-                            <li><a href="/squads/new">Add a Squad</a></li>
-                        {{/if}}
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-<div class="container">
-    <!--begin main template-->
-    <div class="page-header">
-        <img src="/images/rawpixel-com-296621.png" width="70%" alt="https://unsplash.com/search/task?photo=Lh_bn9SgRSY">
-        <h1>Welcome to my Hero Squad. <small>Let's be organized, focused, and efficient.</small></h1>
-    </div>
-    <header>
-        <div class="view intro-2">
-            <div class="full-bg-img">
-                <div class="mask rgba-black-strong flex-center">
-                    <div class="container">
-                        <div class="white-text text-center wow fadeInUp">
-                            <h2>Welcome to my Hero Squad App.</h2>
-                            <h5>Let's be organized, focused, and efficient.</h5>
-                            <br>
-                            <p>Add your hero and hero squad to the list. You can also look around to explore existing heroes and squads.</p>
-                        </div>
+    </nav>
+    <div class="view intro-2">
+        <div class="full-bg-img">
+            <div class="mask rgba-black-strong flex-center">
+                <div class="container">
+                    <div class="white-text text-center wow fadeInUp">
+                        <h2>Welcome to my Hero Squad App.</h2>
+                        <h5>Let's be organized, focused, and efficient.</h5>
+                        <br>
+                        <p>Add your hero and hero squad to the list. You can also look around to explore existing heroes and squads.</p>
                     </div>
                 </div>
             </div>
         </div>
-    </header>
+    </div>
+</header>
+<div class="container">
+    <!--begin main template-->
     <div class="row">
         <div class = "col-md-6"></div>
         <div class = "col-md-6">

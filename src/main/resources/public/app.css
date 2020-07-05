@@ -1,0 +1,14 @@
+.intro-2 {
+    background: url("https://mdbootstrap.com/img/Photos/Others/img (51).jpg")no-repeat center center;
+    background-size: cover;
+    background-blend
+}
+.view {
+    margin-top: -20px;
+}
+.navbar {
+    z-index: 1;
+}
+.view {
+    height: 30vh;
+}
