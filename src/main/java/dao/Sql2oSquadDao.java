@@ -12,7 +12,6 @@ import java.util.List;
 public class Sql2oSquadDao implements SquadDao {
 
     private final Sql2o sql2o;
-    private static Sql2oSquadDao squadDao;
     public Sql2oSquadDao(Sql2o sql2o){
         this.sql2o = sql2o;
     }
@@ -96,7 +95,7 @@ public class Sql2oSquadDao implements SquadDao {
     }
 
     @Override
-    public List<Squad> getAllSquadsWithSpace(List<Squad> squads) {
+    public List<Squad> getAllSquadsWithSpace(List<Squad> squads, Sql2oSquadDao squadDao) {
         List<Squad> squadsWithSpace = new ArrayList<Squad>();
         for (Squad squad: squads){
            int squadId = squad.getId();

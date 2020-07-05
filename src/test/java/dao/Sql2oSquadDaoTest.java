@@ -6,6 +6,8 @@ import org.junit.*;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class Sql2oSquadDaoTest {
@@ -107,6 +109,21 @@ public class Sql2oSquadDaoTest {
         assertTrue(squadDao.getAllHeroesBySquad(squadId).contains(newHero));
         assertTrue(squadDao.getAllHeroesBySquad(squadId).contains(otherHero));
         assertFalse(squadDao.getAllHeroesBySquad(squadId).contains(thirdHero)); //things are accurate!
+    }
+
+    @Test
+    public void getAllSquadsWithSpace_noSquadIsReturnedWhenAllItsMaximumSizeHasReached() throws Exception {
+        Squad squad = new Squad(3, "discipline", "indiscipline");
+        squadDao.add(squad);
+        int squadId = squad.getId();
+        Hero newHero = new Hero("Vincent", 25, "Reading", "fluency", squadId);
+        Hero otherHero = new Hero("Kevin", 20, "Learning", "passing", squadId);
+        Hero thirdHero = new Hero("Vincent", 45, "Leadership", "talking", squadId);
+        heroDao.add(newHero);
+        heroDao.add(otherHero); //we are not adding task 3 so we can test things precisely.
+        heroDao.add(thirdHero);
+        List<Squad> allSquads = squadDao.getAll();
+        assertTrue(squadDao.getAllSquadsWithSpace(allSquads, squadDao).size() > 0);
     }
 
     // helper method
