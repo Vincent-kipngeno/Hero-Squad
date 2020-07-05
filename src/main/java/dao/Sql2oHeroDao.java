@@ -16,7 +16,7 @@ public class Sql2oHeroDao implements HeroDao{
 
     @Override
     public void add (Hero hero){
-        String sql = "INSERT INTO hero (name, special_power, weakness, age, squadId) VALUES (:name, :age, :special_power, :weakness, :squadId)";
+        String sql = "INSERT INTO heroes (name, special_power, weakness, age, squadId) VALUES (:name, :age, :special_power, :weakness, :squadId)";
         try (Connection con = sql2o.open()){
             int id = (int) con.createQuery(sql,true)
                             .bind(hero)
@@ -31,7 +31,10 @@ public class Sql2oHeroDao implements HeroDao{
 
     @Override
     public List<Hero> getAll() {
-        return null;
+        try(Connection con = sql2o.open()){
+            return con.createQuery("SELECT * FROM heroes")
+                    .executeAndFetch(Hero.class);
+        }
     }
 
     @Override
