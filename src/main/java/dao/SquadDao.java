@@ -8,7 +8,6 @@ import java.util.List;
 public interface SquadDao {
     //LIST
     List<Squad> getAll();
-    List<Squad> getAllSquadsWithSpace(List<Squad> squads, Sql2oSquadDao squadDao);//space to accommodate heroes
 
     //CREATE
     void add (Squad squad);

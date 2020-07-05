@@ -93,5 +93,4 @@ public class Sql2oSquadDao implements SquadDao {
                     .executeAndFetch(Hero.class);
         }
     }
-
 }
