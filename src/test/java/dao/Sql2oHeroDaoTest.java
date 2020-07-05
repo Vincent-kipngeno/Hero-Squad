@@ -70,6 +70,16 @@ public class Sql2oHeroDaoTest {
         assertEquals(0, heroDao.getAll().size());
     }
 
+    @Test
+    public void update_heroIsUpdatedCorrectly() {
+        Hero hero = setNewHero();
+        heroDao.add(hero);
+        int currentId = hero.getId();
+        heroDao.update(currentId, 30, "hello", "singing","dancing",2);
+        Hero updatedHero = heroDao.findById(currentId);
+        assertNotEquals(hero, updatedHero);
+    }
+
     public Hero setNewHero(){
         return new Hero("Vincent", 25, "Reading", "fluency", 1);
     }
