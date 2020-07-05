@@ -16,7 +16,7 @@ public class Sql2oHeroDaoTest {
     public static void setUp() throws Exception {
         String connectionString = "jdbc:postgresql://localhost:5432/hero_squad_test"; // connect to postgres test database
         Sql2o sql2o = new Sql2o(connectionString, "vincent", "Taptet#2001");
-        heroDao = new Sql2oHeroDao(sql20);
+        heroDao = new Sql2oHeroDao(sql2o);
         conn = (Connection) sql2o.open();
     }
 
