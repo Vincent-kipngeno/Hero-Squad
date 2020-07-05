@@ -6,10 +6,7 @@ import org.junit.*;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertFalse;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class Sql2oSquadDaoTest {
     private static Sql2oSquadDao squadDao;
@@ -50,7 +47,8 @@ public class Sql2oSquadDaoTest {
     public void existingSquadsCanBeFoundById() throws Exception {
         Squad squad = setupNewSquad();
         squadDao.add(squad);
-        Squad foundSquad = squadDao.findById(squad.getId());
+        int originalSquad = squad.getId();
+        Squad foundSquad = squadDao.findById(originalSquad);
         assertEquals(squad, foundSquad);
     }
 
@@ -100,9 +98,9 @@ public class Sql2oSquadDaoTest {
         Squad squad = setupNewSquad();
         squadDao.add(squad);
         int squadId = squad.getId();
-        Hero newHero = new Hero("Vincent", 25, "Reading", "fluency", 1);
-        Hero otherHero = new Hero("Kevin", 20, "Learning", "passing", 1);
-        Hero thirdHero = new Hero("Vincent", 45, "Leadership", "talking", 1);
+        Hero newHero = new Hero("Vincent", 25, "Reading", "fluency", squadId);
+        Hero otherHero = new Hero("Kevin", 20, "Learning", "passing", squadId);
+        Hero thirdHero = new Hero("Vincent", 45, "Leadership", "talking", squadId);
         heroDao.add(newHero);
         heroDao.add(otherHero); //we are not adding task 3 so we can test things precisely.
         assertEquals(2, squadDao.getAllHeroesBySquad(squadId).size());
