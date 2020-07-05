@@ -28,6 +28,9 @@
                     </select>
                     <p>Don't see the right squad?<a href="/squads/new">Add a new one first.</a></p>
                 {{else}}
+                    <select id="squadId" name="squadId" class="form-control">
+                            <option value="{{squad.id}}">{{squad.name}}</option>
+                    </select>
                     <p>All squads are full if you would like to change? <a href="/squads/new">Add a new one first.</a></p>
                 {{/if}}
             </div>
