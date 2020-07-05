@@ -61,5 +61,28 @@ public class Sql2oSquadDao implements SquadDao {
         }
     }
 
+    @Override
+    public void deleteById(int id) {
+        String sql = "DELETE from squads WHERE id=:id"; //raw sql
+        try (Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeUpdate();
+        } catch (Sql2oException ex){
+            System.out.println(ex);
+        }
+    }
+
+    @Override
+    public void clearAllSquads() {
+        String sql = "DELETE from squads"; //raw sql
+        try (Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .executeUpdate();
+        } catch (Sql2oException ex){
+            System.out.println(ex);
+        }
+    }
+
 
 }
