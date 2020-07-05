@@ -52,5 +52,36 @@ public class App {
             res.redirect("/");
             return null;
         }, new HandlebarsTemplateEngine());
+
+        //get: delete all squads and all heroes
+        get("/squads/delete", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            squadDao.clearAllSquads();
+            heroDao.clearAllHeroes();
+            res.redirect("/");
+            return null;
+        }, new HandlebarsTemplateEngine());
+
+        //get: delete all heroes
+        get("/heroes/delete", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            heroDao.clearAllHeroes();
+            res.redirect("/");
+            return null;
+        }, new HandlebarsTemplateEngine());
+
+        //get a specific squad (and the heroes it contains)
+        get("/categories/:id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfSquadToFind = Integer.parseInt(req.params("id")); //new
+            Squad foundSquad = squadDao.findById(idOfSquadToFind);
+            model.put("squad", foundSquad);
+            List<Hero> allHeroesBySquad = squadDao.getAllHeroesBySquad(idOfSquadToFind);
+            model.put("heroes", allHeroesBySquad);
+            model.put("squads", squadDao.getAll()); //refresh list of links for navbar
+            return new ModelAndView(model, "squad-detail.hbs"); //new
+        }, new HandlebarsTemplateEngine());
+
+
     }
 }
