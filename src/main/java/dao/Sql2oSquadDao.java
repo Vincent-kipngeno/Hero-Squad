@@ -37,5 +37,29 @@ public class Sql2oSquadDao implements SquadDao {
         }
     }
 
+    @Override
+    public Squad findById(int id) {
+        try(Connection con = sql2o.open()){
+            return con.createQuery("SELECT * FROM squads WHERE id = :id")
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(Squad.class);
+        }
+    }
+
+    @Override
+    public void update(int id, int maximumSize, String name, String causeToFight){
+        String sql = "UPDATE squads SET (maximumSize, name, causeToFight) = (:maximumSize, :name, :causeToFight) WHERE id=:id";
+        try(Connection con = sql2o.open()){
+            con.createQuery(sql)
+                    .addParameter("maximumSize", maximumSize)
+                    .addParameter("name", name)
+                    .addParameter("causeToFight", causeToFight)
+                    .addParameter("id", id)
+                    .executeUpdate();
+        } catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
+    }
+
 
 }
