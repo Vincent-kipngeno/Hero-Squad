@@ -72,7 +72,7 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         //get a specific squad (and the heroes it contains)
-        get("/categories/:id", (req, res) -> {
+        get("/squads/:id", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             int idOfSquadToFind = Integer.parseInt(req.params("id"));
             Squad foundSquad = squadDao.findById(idOfSquadToFind);
@@ -80,7 +80,7 @@ public class App {
             List<Hero> allHeroesBySquad = squadDao.getAllHeroesBySquad(idOfSquadToFind);
             model.put("heroes", allHeroesBySquad);
             model.put("squads", squadDao.getAll()); //refresh list of links for navbar
-            return new ModelAndView(model, "squad-detail.hbs");
+            return new ModelAndView(model, "squad-details.hbs");
         }, new HandlebarsTemplateEngine());
 
         //get: show a form to update a squad
@@ -187,6 +187,11 @@ public class App {
             String specialPower = req.queryParams("specialPower");
             String weakness = req.queryParams("weakness");
             int newSquadId = Integer.parseInt(req.queryParams("squadId"));
+            if (newSquadId >= 0){
+                ;
+            } else{
+                newSquadId = heroDao.findById(heroToEditId).getSquadId();
+            }
             heroDao.update(heroToEditId,age, newName, specialPower, weakness, newSquadId);
             res.redirect("/");
             return null;
