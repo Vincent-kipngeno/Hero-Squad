@@ -43,7 +43,10 @@ public class SquadTest {
     }
 
     @Test
-    public void setId() {
+    public void setId_correctIdIsSetAndReturned() {
+        Squad squad =  helperMethod();
+        squad.setId(1);
+        assertEquals(1, squad.getId());
     }
 
     public Squad helperMethod(){
