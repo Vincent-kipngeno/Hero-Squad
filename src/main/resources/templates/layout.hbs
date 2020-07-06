@@ -4,10 +4,18 @@
     <title>{{#block "title"}}Blog{{/block}}</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link
+            href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+            rel="stylesheet"
+            integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+            crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="app.css"/>
 </head>
-<body>
 <style>
+    html, body{
+        overflow-x: hidden;
+    }
     .intro-2 {
         background: url("https://mdbootstrap.com/img/Photos/Others/img (51).jpg") rgba(0, 0, 0, 0.5) no-repeat center center;
         background-size: cover;
@@ -40,7 +48,12 @@
     div.container {
         padding: 10px;
     }
+    .card-footer{
+        background-color: black;
+        padding-bottom: 20%;
+    }
 </style>
+<body>
 <header>
     <nav class="navbar navbar-fixed-top navbar-dark bg-primary" >
         <div class="container-fluid">
@@ -149,6 +162,37 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="card card-footer">
+            <section class="container contact-section">
+                <h1 style="color: orange; font-family:serif;">Connect with on socials</h1>
+                <div class="row" style="color: white;">
+                    <div class="col-md-3 col-lg-3 col-sm-3">
+
+                    </div>
+                    <div class=" col-md-6 col-lg-6 col-sm-6 ">
+                        <div class="col-md-3 col-lg-3 col-sm-3">
+                            <i class="fa fa-twitter"></i>
+                            Twitter
+                        </div>
+                        <div class="col-md-3 col-lg-3 col-sm-3">
+                            <i class="fa fa-facebook"></i>
+                            Facebook
+                        </div>
+                        <div class="col-md-3 col-lg-3 col-sm-3">
+                            <i class="fa fa-instagram"></i>
+                            Instagram
+                        </div>
+                        <div class="col-md-3 col-lg-3 col-sm-3">
+                            <i class="fa fa-medium"></i>
+                            Medium
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-lg-3 col-sm-3">
+
+                    </div>
+                </div>
+            </section>
         </div>
     </footer>
     </body>
