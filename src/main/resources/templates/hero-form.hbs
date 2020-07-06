@@ -12,11 +12,25 @@
             </div>
             <div class="form-group">
                 <label for="specialPower">Edit this hero's special Power:</label>
-                <input id="specialPower" name="specialPower" class="form-control" type="text" value="{{hero.name}}">
+                <select id="specialPower" class="form-control" name="specialPower" required>
+                    <option value="Superman">Superman</option>
+                    <option value="Green lantern">Green Lantern</option>
+                    <option value="Martian Manhunter">Martian Manhunter</option>
+                    <option value="The Flash">The Flash</option>
+                    <option value="Wonder Woman">Wonder Woman</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="weakness">Edit this hero's weakness:</label>
-                <input id="weakness" name="weakness" class="form-control" type="text" value="{{hero.name}}">
+                <select id="weakness" class="form-control" name="weakness" required>
+                    <option value="Magic">Magic</option>
+                    <option value="Red Sun">Red Sun</option>
+                    <option value="Kryptonite">Kryptonite</option>
+                    <option value="Fear">Fear</option>
+                    <option value="Cold and No Gravity">Cold and No Gravity</option>
+                    <option value="Fire">Fire</option>
+                    <option value="Lasso">Lasso</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="squadId">Update this hero's squad:</label>
@@ -48,15 +62,29 @@
                     </div>
                     <div class="form-group">
                         <label for="age">Edit this hero's age:</label>
-                        <input id="age" name="age" class="form-control" type="number" value="{{hero.age}}" required>
+                        <input id="age" name="age" class="form-control" type="number" required>
                     </div>
                     <div class="form-group">
                         <label for="specialPower">Edit this hero's special Power:</label>
-                        <input id="specialPower" name="specialPower" class="form-control" type="text" value="{{hero.name}}" required>
+                        <select id="specialPower" class="form-control" name="specialPower" required>
+                            <option value="Superman">Superman</option>
+                            <option value="Green lantern">Green Lantern</option>
+                            <option value="Martian Manhunter">Martian Manhunter</option>
+                            <option value="The Flash">The Flash</option>
+                            <option value="Wonder Woman">Wonder Woman</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="weakness">Edit this hero's weakness:</label>
-                        <input id="weakness" name="weakness" class="form-control" type="text" value="{{hero.name}}" required>
+                        <select id="weakness" class="form-control" name="weakness" required>
+                            <option value="Magic">Magic</option>
+                            <option value="Red Sun">Red Sun</option>
+                            <option value="Kryptonite">Kryptonite</option>
+                            <option value="Fear">Fear</option>
+                            <option value="Cold and No Gravity">Cold and No Gravity</option>
+                            <option value="Fire">Fire</option>
+                            <option value="Lasso">Lasso</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="squadId">Add squad to this hero:</label>
