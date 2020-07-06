@@ -1,10 +1,9 @@
 {{#partial "content"}}
-
-    <h1> List of Heroes</h1>
+     <h1> List of Heroes</h1>
 
     {{#if heroes}}
         {{#each heroes }}
-            <div class="card" style="margin: 10px; background-color:#eee; text-align:center; padding-top:10px; padding-bottom:10px;">
+            <div class="card hero-card" style="margin: 20px; background-color:#eee; text-align:center; padding-top:10px; padding-bottom:10px;">
                 <a href="/squads/{{squadId}}/heroes/{{id}}">
                     <div class="card-body">
                         <p>{{name}}</p>
