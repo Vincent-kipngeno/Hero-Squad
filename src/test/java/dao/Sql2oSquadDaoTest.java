@@ -71,7 +71,7 @@ public class Sql2oSquadDaoTest {
         Squad squad = setupNewSquad();
         squadDao.add(squad);
         int currentId = squad.getId();
-        squadDao.update(currentId, 6, "indiscipline", "discipline");
+        squadDao.update(currentId, "indiscipline", "discipline");
         Squad updatedSquad = squadDao.findById(currentId);
         assertNotEquals(squad, updatedSquad);
     }
@@ -87,7 +87,7 @@ public class Sql2oSquadDaoTest {
     @Test
     public void clearAllClearsAllSquads() throws Exception {
         Squad squad = setupNewSquad();
-        Squad otherSquad = new Squad(4, "female", "feminism");
+        Squad otherSquad = new Squad( "female", "feminism");
         squadDao.add(squad);
         squadDao.add(otherSquad);
         int daoSize = squadDao.getAll().size();
@@ -114,6 +114,6 @@ public class Sql2oSquadDaoTest {
 
     // helper method
     public Squad setupNewSquad(){
-        return new Squad(4, "discipline", "indiscipline");
+        return new Squad("discipline", "indiscipline");
     }
 }

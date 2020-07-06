@@ -20,7 +20,7 @@ public class SquadTest {
     @Test
     public void getMaximumSize_correctMaxSizeIsReturned() {
         Squad squad =  helperMethod();
-        assertEquals(4, squad.getMaximumSize());
+        assertEquals(10, squad.getMaximumSize());
     }
 
     @Test
@@ -50,6 +50,6 @@ public class SquadTest {
     }
 
     public Squad helperMethod(){
-        return new Squad(4, "discipline", "indiscipline");
+        return new Squad( "discipline", "indiscipline");
     }
 }

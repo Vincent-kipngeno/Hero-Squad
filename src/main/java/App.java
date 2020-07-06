@@ -48,7 +48,7 @@ public class App {
             String name = req.queryParams("name");
             int maximumSize = Integer.parseInt(req.queryParams("maximumSize"));
             String causeToFight = req.queryParams("cause");
-            Squad newSquad = new Squad(maximumSize, name, causeToFight);
+            Squad newSquad = new Squad( name, causeToFight);
             squadDao.add(newSquad);
             res.redirect("/");
             return null;
@@ -99,8 +99,7 @@ public class App {
             int idOfSquadToEdit = Integer.parseInt(req.params("id"));
             String newName = req.queryParams("name");
             String causeToFight = req.queryParams("cause");
-            int maximumSize = Integer.parseInt(req.queryParams("maximumSize"));
-            squadDao.update(idOfSquadToEdit,maximumSize, newName, causeToFight);
+            squadDao.update(idOfSquadToEdit, newName, causeToFight);
             res.redirect("/");
             return null;
         }, new HandlebarsTemplateEngine());

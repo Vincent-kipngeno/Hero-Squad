@@ -8,8 +8,8 @@ public class Squad {
     private String causeToFight;
     private int id;
 
-    public Squad(int maximumSize, String name, String causeToFight) {
-        this.maximumSize = maximumSize;
+    public Squad(String name, String causeToFight) {
+        this.maximumSize = 10;
         this.name = name;
         this.causeToFight = causeToFight;
     }

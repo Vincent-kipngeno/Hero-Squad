@@ -48,11 +48,10 @@ public class Sql2oSquadDao implements SquadDao {
     }
 
     @Override
-    public void update(int id, int maximumSize, String name, String causeToFight){
-        String sql = "UPDATE squads SET (maximumSize, name, causeToFight) = (:maximumSize, :name, :causeToFight) WHERE id=:id";
+    public void update(int id, String name, String causeToFight){
+        String sql = "UPDATE squads SET (name, causeToFight) = (:name, :causeToFight) WHERE id=:id";
         try(Connection con = sql2o.open()){
             con.createQuery(sql)
-                    .addParameter("maximumSize", maximumSize)
                     .addParameter("name", name)
                     .addParameter("causeToFight", causeToFight)
                     .addParameter("id", id)
