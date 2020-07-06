@@ -1,10 +1,12 @@
 {{#partial "content"}}
-    <h1>{{squad.name}}</h1>
+    <div style="color:purple; font-family:Serif">
+        <h1>{{squad.name}}</h1>
+    </div>
     <ul>
-        <li>{{squad.maximumSize}}</li>
-        <li>{{squad.causeToFight}}</li>
+        <li>Maximum size: {{squad.maximumSize}}</li>
+        <li>Cause to Fight: {{squad.causeToFight}}</li>
     </ul>
-    <p>Here are all the heroes listed in this squad:</p>
+    <h4 style="color:green; font-family:Serif">Here are all the heroes listed in this squad:</h4>
     <ul>
         {{#each heroes}}
             <li>
@@ -12,8 +14,10 @@
             </li>
         {{/each}}
     </ul>
-    <a href="/squads/{{squad.id}}/edit">Edit this squad</a><br>
-    <a href="/squads/{{squad.id}}/delete">DELETE this squad</a>
+    <div class="row">
+        <a class="btn btn-info" href="/squads/{{squad.id}}/edit">Edit this squad</a>
+        <a class="btn btn-info"  href="/squads/{{squad.id}}/delete">DELETE this squad</a>
+    </div>
 {{/partial}}
 
 {{> layout.hbs}}
