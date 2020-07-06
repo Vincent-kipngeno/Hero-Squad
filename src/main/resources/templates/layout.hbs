@@ -18,7 +18,9 @@
     .hero-card:hover {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
      }
-    .hero-card a:hover, a:active {color: red;}
+    a:hover {
+        text-decoration: none;
+    }
     .view {
         margin-top: 50px;
         padding-top: 20px;
@@ -27,7 +29,16 @@
         z-index: 1;
     }
     .view {
-        height: 30vh;
+        height: 40vh;
+    }
+    div.polaroid {
+        margin-bottom: 20px;
+        maximum-width: 100%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    div.container {
+        padding: 10px;
     }
 </style>
 <header>
@@ -92,18 +103,55 @@
     </div>
 </div>
 <!--end main template-->
-{{#block "footer"}}
     <footer class="footer">
         <div class="container">
             <hr>
-            <p class="text-muted">
-                <a href="/categories/delete">delete all categories & tasks</a><br>
-                <a href="/tasks/delete">delete all tasks</a>
-            </p>
+            <div  class="row text-muted">
+                <div class="col-md-12" style="text-align: center">
+                    <a class="btn btn-lg btn-primary" href="/squads/delete">Delete All Squads & Heroes</a>
+                    <a class="btn btn-lg btn-primary" href="/heroes/delete">Delete All Heroes</a>
+                </div>
+            </div>
+            <hr>
+            <div class="container">
+                <div class="row ">
+                    <div class="col-md-3">
+                        <div class="polaroid">
+                            <img src="https://mdbootstrap.com/img/Photos/Others/img%20(55).jpg" alt="Norway" style="width:100%">
+                            <div class="container">
+                                <p>Hardanger, Norway</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="polaroid">
+                            <img src="https://mdbootstrap.com/img/Photos/Others/img%20(43).jpg" alt="Norway" style="width:100%">
+                            <div class="container">
+                                <p>Hardanger, Norway</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="polaroid">
+                            <img src="https://mdbootstrap.com/img/Photos/Others/img%20(46).jpg" alt="Norway" style="width:100%">
+                            <div class="container">
+                                <p>Hardanger, Norway</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="polaroid">
+                            <img src="https://mdbootstrap.com/img/Photos/Others/img%20(45).jpg" alt="Norway" style="width:100%">
+                            <div class="container">
+                                <p>Hardanger, Norway</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
     </body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     </html>
-{{/block}}
