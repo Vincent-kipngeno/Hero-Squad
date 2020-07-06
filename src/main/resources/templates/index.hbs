@@ -4,7 +4,13 @@
 
     {{#if heroes}}
         {{#each heroes }}
-            <p><a href="/squads/{{squadId}}/heroes/{{id}}">{{name}}</a></p>
+            <div class="card" style="margin: 10px; background-color:#eee; text-align:center; padding-top:10px; padding-bottom:10px;">
+                <a href="/squads/{{squadId}}/heroes/{{id}}">
+                    <div class="card-body">
+                        <p>{{name}}</p>
+                    </div>
+                </a>
+            </div>
         {{/each}}
     {{else}}
         <p>No heroes yet!</p>
