@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.mycompany.app</groupId>
-    <artifactId>my-app</artifactId>
+    <groupId>Hero-Squad</groupId>
+    <artifactId>hero-squad</artifactId>
     <version>1.0</version>
 
     <dependencies>
@@ -83,17 +83,20 @@
             <plugin>
                 <groupId>com.heroku.sdk</groupId>
                 <artifactId>heroku-maven-plugin</artifactId>
-                <version>0.4.4</version>
+                <version>3.0.2</version>
                 <configuration>
                     <jdkVersion>1.8</jdkVersion>
                     <!-- Change this to YOUR application name! -->
                     <appName>hero-squad-vince</appName>
                     <processTypes>
-                        <web>java -jar target/my-app-1.0-jar-with-dependencies.jar</web>
+                        <web>java -jar target/hero-squad-1.0-jar-with-dependencies.jar</web>
+                    </processTypes>
+                    <processTypes>
+                        <web>java $JAVA_OPTS -cp target/classes:target/dependency/* App</web>
                     </processTypes>
                 </configuration>
             </plugin>
         </plugins>
     </build>
 </project>
-        <!--postgresql-horizontal-79704  //  postgresql-defined-50119  -->
+        <!--postgresql-elliptical-90603  //   postgresql-sinuous-97658  -->

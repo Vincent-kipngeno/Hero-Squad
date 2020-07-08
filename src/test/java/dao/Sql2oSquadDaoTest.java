@@ -18,8 +18,9 @@ public class Sql2oSquadDaoTest {
     @BeforeClass
     public static void setUp() throws Exception {
         //String connectionString = "jdbc:postgresql://localhost:5432/hero_squad_test"; // connect to postgres test database
-        String connectionString = "jdbc:postgresql://ec2-35-168-54-239.compute-1.amazonaws.com:5432/d7v15029ta6m";
-        Sql2o sql2o = new Sql2o(connectionString, "edqfbqkssenioc", "275aa32494363e11780caf12553918ae7f1712c74a42c769cdf11d9dd4d989fb");
+        String connectionString = "jdbc:postgresql://ec2-34-225-162-157.compute-1.amazonaws.com:5432/d910g3e6kb2asg?sslmode=require";
+        //Sql2o sql2o = new Sql2o(connectionString, "vincent", "Taptet#2001");
+        Sql2o sql2o = new Sql2o(connectionString, "hzdmiqhhnvyijh", "809f3b2d8e96f170d5c8194a952507d2be5eea955531beca9a9d6f7af5e1d8f3");
         squadDao = new Sql2oSquadDao(sql2o);
         heroDao = new Sql2oHeroDao(sql2o);
         conn = sql2o.open();
