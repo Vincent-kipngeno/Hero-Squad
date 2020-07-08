@@ -24,9 +24,9 @@ public class App {
         port(getHerokuAssignedPort());
         staticFileLocation("/public");
         //String connectionString = "jdbc:postgresql://localhost:5432/hero_squad";
-        String connectionString = "jdbc:postgresql://ec2-35-175-155-248.compute-1.amazonaws.com:5432/ddalfipvhtddeq";
+        String connectionString = "jdbc:postgresql://ec2-52-204-232-46.compute-1.amazonaws.com:5432/d9hl8541b0v65d?sslmode=require";
         //Sql2o sql2o = new Sql2o(connectionString, "vincent", "Taptet#2001");
-        Sql2o sql2o = new Sql2o(connectionString, "kleflbjnnlrzlx", "a07e47255e2e7da0e08d5a6308fdc34391b0054439d35bcdd0b43b50e8d61f64");
+        Sql2o sql2o = new Sql2o(connectionString, "ytkddhbgeseitu", "24247282bd68c436cd7af9dc6543ca4a3878e6dd466a30eeb3cf963b53936300");
         Sql2oHeroDao heroDao = new Sql2oHeroDao(sql2o);
         Sql2oSquadDao squadDao = new Sql2oSquadDao(sql2o);
 
@@ -53,7 +53,6 @@ public class App {
         post("/squads", (req, res) -> { //new
             Map<String, Object> model = new HashMap<>();
             String name = req.queryParams("name");
-            int maximumSize = Integer.parseInt(req.queryParams("maximumSize"));
             String causeToFight = req.queryParams("cause");
             Squad newSquad = new Squad( name, causeToFight);
             squadDao.add(newSquad);
